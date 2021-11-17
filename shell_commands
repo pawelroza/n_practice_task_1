@@ -8,8 +8,11 @@ ssh -V (check ssh)
 if doesn't exist (sudo yum -y install openssh-server openssh-clients)
 ----------
 
+Вариант 0. Без Ansible
 ssh-keygen -t rsa
 ssh-copy-id username@[remote_ip]
+
+Вариант 1 С Ansible
 
 sudo yum install httpd -y
 
