@@ -22,6 +22,7 @@ sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
 
 sudo yum install -y git
+git clone https://github.com/pawelroza/n_practice_task_1.git
 
 ----------
 take file index.html and put it to /var/www/html/
