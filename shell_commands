@@ -1,20 +1,22 @@
 sudo yum update -y
 sudo yum install -y ansible
------
+
+----------
 check ssh (ssh -V)
 if doesn't exist (sudo yum -y install openssh-server openssh-clients)
+----------
 
-ssh-keygen -m
-ssh-copy-id 
-
+ssh-keygen -t rsa
+ssh-copy-id username@[remote_ip]
 
 sudo yum install httpd -y
 
-sudo nano /etc/selinux/config
 ----------
+sudo nano /etc/selinux/config
 change SELINUX=enforcing to SELINUX=disabled
 ----------
 
 sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
+sudo nano /var/www/html/index.html
