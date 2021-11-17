@@ -21,6 +21,8 @@ sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
 
+sudo yum install -y git
+
 ----------
 take file index.html and put it to /var/www/html/
 ----------
