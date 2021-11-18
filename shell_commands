@@ -1,3 +1,6 @@
+Необязательная информация, т.к. сотрудник, по идее, уже знаком с основами работы в Linux. //Все команды в данном блоке ориентированны на CentOS, для Debian и Ubuntu для установки пакетов ипользовать команду apt-get.
+Step 0
+Создать user с root(super user) правами
 Step 1
 sudo yum update -y
 sudo yum install -y epel-release
@@ -13,12 +16,13 @@ ssh-keygen -t rsa
 ssh-copy-id username@[remote_ip]
 
 Вариант 1 С Ansible
+Создать playbook
 
 sudo yum install httpd -y
 
 ----------
 sudo nano /etc/selinux/config
-"change SELINUX=enforcing to SELINUX=disabled"
+Поменять SELINUX=enforcing на SELINUX=disabled" если это не так
 ----------
 
 sudo firewall-cmd --permanent --add-port=80/tcp
@@ -29,15 +33,18 @@ sudo yum install -y git
 git clone https://github.com/pawelroza/n_practice_task_1.git
 
 ----------
-take file index.html and put it to /var/www/html/
+take file index.html and put it to /var/www/html/ (файл есть в репозитории(стандартный Apache) 
 ----------
 
 sudo systemctl start httpd
 
 check webinterface. if it is working step 2
 
+
 /////////////
 
+
 Step 2
- 
+С помощью возможностей Ansible на тестовые сервера ставим Appache http server (строка 39) и проводим его настройку (порты, веб-морда и т.д.).
+Выполняется с помощью playbook'а.
 
