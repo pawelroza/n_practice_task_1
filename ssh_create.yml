@@ -1,0 +1,26 @@
+---
+- name: Generate ssh keys
+  local_action:
+    module: "user"
+    name: "{{ lookup('env','USER') }}"
+    generate_ssh_key: true
+    ssh_key_type: "{{ item.0 }}"
+    ssh_key_bits: "{{ item.1 }}"
+    ssh_key_file: "{{ playbook_dir }}/{{ item.0 }}_{{ item.1 }}_key"
+  with_together:
+  - [ 'rsa', 'dsa' ]
+  - [ 2048, 1024 ]
+  loop_control:
+    label: "{{ item.0 }}_{{ item.1 }}_key"
+
+- name: Copy generated ssh keys to remote machine
+  copy:
+    src: "{{ playbook_dir }}/{{ item.0 }}_{{ item.1 }}_key"
+    dest: "/etc/ssh/ssh_host_{{ item.0 }}_key{{ item.1 }}"
+  with_nested:
+  - [ 'rsa', 'dsa' ]
+  - [ '', '.pub' ]
+  notify:
+  - Restart sshd
+  loop_control:
+    label: "/etc/ssh/ssh_host_{{ item.0 }}_key{{ item.1 }}"
