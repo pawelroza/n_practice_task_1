@@ -20,3 +20,6 @@ Ansible practice task 1 for Nexign
 
 • Проверьте работоспособность
 
+-----
+Task 2 https://github.com/pawelroza/n_practice_task_2
+-----
